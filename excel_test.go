@@ -11,8 +11,8 @@ type Resume struct {
 	Like string `json:"like"`
 	Sex string `json:"sex" excelName:"我的性别"`
 	Age int `json:"age" excelName:"我的年龄"`
-	Status int8 `json:"status" excelName:"当前状态" enums:"0:冻结,1:开启,2:关闭"`
-	CreateTime int64 `json:"create_time" excelName:"创建时间" excelTime:"int"`
+	Status int8 `json:"status" excelName:"当前状态" enums:"0:冻结,1:开启,2:关闭"` //如设置enums 数据类型必须为 int8
+	CreateTime int64 `json:"create_time" excelName:"创建时间" excelTime:"int"` //如设置 excelTime为int 数据类型必须为 int64
 	UpdateTime time.Time `json:"update_time" excelName:"更新时间" excelTime:"time"`
 	Test string `json:"test" excelName:"测试1"`
 	Test2 string `json:"test2" excelName:"测试2"`
