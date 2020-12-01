@@ -55,7 +55,6 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 		subv = reflect.New(c).Elem()
 		v2 := reflect.Append(v,subv)
 		v.Set(v2)
-		fmt.Println("当前切片长度:",v.Len())
 		for i := 0; i < v.Index(v_index).NumField();i++ {
 			if _, ok := map_data[i]; !ok {
 				continue
@@ -161,7 +160,6 @@ func (e *Excel) SaveExcel(file string,data interface{})(err error){
 					continue
 				}
 				axis := fmt.Sprintf("%s%d",addStr("A",int32(x-null_num)),i + 2)
-				fmt.Println(excelName,value.Field(x))
 				e.f.SetCellValue(e.Sheet1,axis,value.Field(x))
 			}
 		 }

@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b5b8c4f8-49d9-4646-929b-86dc697e3538" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excel.go" beforeDir="false" afterPath="$PROJECT_DIR$/excel.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excel_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/excel_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/test.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +40,18 @@
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Go Test.TestExcel_ReadExcel in pkg/excel">
+  <component name="RunManager" selected="Go Test.TestExcel in github.com/xie135400/excel">
+    <configuration name="TestExcel in github.com/xie135400/excel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="excel" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/xie135400/excel" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestExcel\E$" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestExcel in pkg/excel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="excel" />
       <working_directory value="$PROJECT_DIR$" />
@@ -48,6 +61,17 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <pattern value="^\QTestExcel\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestExcel_ReadExcel in github.com/xie135400/excel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="excel" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/xie135400/excel" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestExcel_ReadExcel\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestExcel_ReadExcel in pkg/excel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -63,6 +87,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestExcel in github.com/xie135400/excel" />
+        <item itemvalue="Go Test.TestExcel_ReadExcel in github.com/xie135400/excel" />
         <item itemvalue="Go Test.TestExcel_ReadExcel in pkg/excel" />
         <item itemvalue="Go Test.TestExcel in pkg/excel" />
       </list>
@@ -76,21 +102,29 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="207" key="GridCell.Tab.0.bottom" timestamp="1606810423486">
+    <state width="1398" height="207" key="GridCell.Tab.0.bottom" timestamp="1606813739876">
       <screen x="0" y="23" width="1440" height="807" />
     </state>
-    <state width="1398" height="207" key="GridCell.Tab.0.bottom/0.23.1440.807@0.23.1440.807" timestamp="1606810423486" />
-    <state width="1398" height="207" key="GridCell.Tab.0.center" timestamp="1606810423485">
+    <state width="1398" height="207" key="GridCell.Tab.0.bottom/0.23.1440.807@0.23.1440.807" timestamp="1606813739876" />
+    <state width="1398" height="207" key="GridCell.Tab.0.center" timestamp="1606813739875">
       <screen x="0" y="23" width="1440" height="807" />
     </state>
-    <state width="1398" height="207" key="GridCell.Tab.0.center/0.23.1440.807@0.23.1440.807" timestamp="1606810423485" />
-    <state width="1398" height="207" key="GridCell.Tab.0.left" timestamp="1606810423484">
+    <state width="1398" height="207" key="GridCell.Tab.0.center/0.23.1440.807@0.23.1440.807" timestamp="1606813739875" />
+    <state width="1398" height="207" key="GridCell.Tab.0.left" timestamp="1606813739875">
       <screen x="0" y="23" width="1440" height="807" />
     </state>
-    <state width="1398" height="207" key="GridCell.Tab.0.left/0.23.1440.807@0.23.1440.807" timestamp="1606810423484" />
-    <state width="1398" height="207" key="GridCell.Tab.0.right" timestamp="1606810423486">
+    <state width="1398" height="207" key="GridCell.Tab.0.left/0.23.1440.807@0.23.1440.807" timestamp="1606813739875" />
+    <state width="1398" height="207" key="GridCell.Tab.0.right" timestamp="1606813739876">
       <screen x="0" y="23" width="1440" height="807" />
     </state>
-    <state width="1398" height="207" key="GridCell.Tab.0.right/0.23.1440.807@0.23.1440.807" timestamp="1606810423486" />
+    <state width="1398" height="207" key="GridCell.Tab.0.right/0.23.1440.807@0.23.1440.807" timestamp="1606813739876" />
+    <state x="328" y="44" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606811859927">
+      <screen x="0" y="23" width="1440" height="807" />
+    </state>
+    <state x="328" y="44" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1440.807@0.23.1440.807" timestamp="1606811859927" />
+    <state x="412" y="181" width="615" height="490" key="find.popup" timestamp="1606811863811">
+      <screen x="0" y="23" width="1440" height="807" />
+    </state>
+    <state x="412" y="181" width="615" height="490" key="find.popup/0.23.1440.807@0.23.1440.807" timestamp="1606811863811" />
   </component>
 </project>
