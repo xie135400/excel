@@ -10,11 +10,11 @@ import (
 
 type Excel struct {
 	f *excelize.File
-	Sheet1 string
+	Sheet string
 }
 func (e *Excel) ReadExcel(file string,data interface{})(err error){
-	if e.Sheet1 == "" {
-		e.Sheet1 = "Sheet1"
+	if e.Sheet == "" {
+		e.Sheet = "Sheet1"
 	}
 	if reflect.ValueOf(data).Kind() != reflect.Ptr || reflect.TypeOf(data).Elem().Kind() != reflect.Slice {
 		err = errors.New("参数错误")
@@ -28,7 +28,7 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 	c := reflect.TypeOf(data).Elem().Elem()
 	t := reflect.TypeOf(data).Elem().Elem()
 	// Get all the rows in the Sheet1.
-	rows, err := e.f.GetRows("Sheet1")
+	rows, err := e.f.GetRows(e.Sheet)
 	var map_data = make(map[int]int)
 	var v_index int = 0
 	for x, row := range rows {
@@ -127,15 +127,15 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 	return
 }
 func (e *Excel) SaveExcel(file string,data interface{})(err error){
-	if e.Sheet1 == "" {
-		e.Sheet1 = "Sheet1"
+	if e.Sheet == "" {
+		e.Sheet = "Sheet1"
 	}
 	if reflect.ValueOf(data).Kind() != reflect.Ptr || reflect.TypeOf(data).Elem().Kind() != reflect.Slice {
 		err = errors.New("参数错误")
 		return err
 	}
 	e.f = excelize.NewFile()
-	index := e.f.NewSheet(e.Sheet1)
+	index := e.f.NewSheet(e.Sheet)
 	t := reflect.TypeOf(data).Elem().Elem()
 	null_num := 0
 	for i := 0; i < t.NumField(); i++ {
@@ -145,7 +145,7 @@ func (e *Excel) SaveExcel(file string,data interface{})(err error){
 			continue
 		}
 		axis := fmt.Sprintf("%s1",addStr("A",int32(i-null_num)))
-		e.f.SetCellValue(e.Sheet1,axis,excelName)
+		e.f.SetCellValue(e.Sheet,axis,excelName)
 	}
 	num := reflect.ValueOf(data).Elem().Len()
 	if num > 0 {
@@ -160,7 +160,7 @@ func (e *Excel) SaveExcel(file string,data interface{})(err error){
 					continue
 				}
 				axis := fmt.Sprintf("%s%d",addStr("A",int32(x-null_num)),i + 2)
-				e.f.SetCellValue(e.Sheet1,axis,value.Field(x))
+				e.f.SetCellValue(e.Sheet,axis,value.Field(x))
 			}
 		 }
 	}

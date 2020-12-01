@@ -37,18 +37,18 @@ func TestExcel(t *testing.T) {
 		Test3: "1",
 		Test4: "1",
 		Test5: "1",
-		Test6: "11fewfeeww2efefefwefewfefewfewfwefewfe",
+		Test6: "1",
 		Test7: "1",
 		Test8: "1",
-		Test9: "11fewfeeww2efefefwefewfefewfewfwefewfe",
+		Test9: "1",
 		Test15: "1",
-		Test16: "11fewfeeww2efefefwefewfefewfewfwefewfe",
-		Test17: "11fewfeeww2efefefwefewfefewfewfwefewfe",
+		Test16: "1",
+		Test17: "1",
 		Test18: "1",
-		Test19: "11fewfeeww2efefefwefewfefewfewfwefewfe",
+		Test19: "1",
 	}
 
-	for i := 0; i < 10000;i ++ {
+	for i := 0; i < 50000;i ++ {
 		stru = append(stru,info)
 	}
 	e := Excel{}
