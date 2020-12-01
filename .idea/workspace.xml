@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/excel.go" beforeDir="false" afterPath="$PROJECT_DIR$/excel.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/excel_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/excel_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/test.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +40,7 @@
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Go Test.TestExcel in github.com/xie135400/excel">
+  <component name="RunManager" selected="Go Test.TestExcel_ReadExcel in github.com/xie135400/excel">
     <configuration name="TestExcel in github.com/xie135400/excel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="excel" />
       <working_directory value="$PROJECT_DIR$" />
@@ -86,8 +87,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestExcel in github.com/xie135400/excel" />
         <item itemvalue="Go Test.TestExcel_ReadExcel in github.com/xie135400/excel" />
+        <item itemvalue="Go Test.TestExcel in github.com/xie135400/excel" />
         <item itemvalue="Go Test.TestExcel_ReadExcel in pkg/excel" />
         <item itemvalue="Go Test.TestExcel in pkg/excel" />
       </list>
@@ -101,22 +102,26 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="207" key="GridCell.Tab.0.bottom" timestamp="1606813774756">
+    <state width="1398" height="216" key="GridCell.Tab.0.bottom" timestamp="1606823192608">
       <screen x="0" y="23" width="1440" height="807" />
     </state>
-    <state width="1398" height="207" key="GridCell.Tab.0.bottom/0.23.1440.807@0.23.1440.807" timestamp="1606813774756" />
-    <state width="1398" height="207" key="GridCell.Tab.0.center" timestamp="1606813774755">
+    <state width="1398" height="216" key="GridCell.Tab.0.bottom/0.23.1440.807@0.23.1440.807" timestamp="1606823192608" />
+    <state width="1398" height="207" key="GridCell.Tab.0.bottom/0.23.1440.810@0.23.1440.810" timestamp="1606818238724" />
+    <state width="1398" height="216" key="GridCell.Tab.0.center" timestamp="1606823192608">
       <screen x="0" y="23" width="1440" height="807" />
     </state>
-    <state width="1398" height="207" key="GridCell.Tab.0.center/0.23.1440.807@0.23.1440.807" timestamp="1606813774755" />
-    <state width="1398" height="207" key="GridCell.Tab.0.left" timestamp="1606813774755">
+    <state width="1398" height="216" key="GridCell.Tab.0.center/0.23.1440.807@0.23.1440.807" timestamp="1606823192608" />
+    <state width="1398" height="207" key="GridCell.Tab.0.center/0.23.1440.810@0.23.1440.810" timestamp="1606818238723" />
+    <state width="1398" height="216" key="GridCell.Tab.0.left" timestamp="1606823192607">
       <screen x="0" y="23" width="1440" height="807" />
     </state>
-    <state width="1398" height="207" key="GridCell.Tab.0.left/0.23.1440.807@0.23.1440.807" timestamp="1606813774755" />
-    <state width="1398" height="207" key="GridCell.Tab.0.right" timestamp="1606813774756">
+    <state width="1398" height="216" key="GridCell.Tab.0.left/0.23.1440.807@0.23.1440.807" timestamp="1606823192607" />
+    <state width="1398" height="207" key="GridCell.Tab.0.left/0.23.1440.810@0.23.1440.810" timestamp="1606818238723" />
+    <state width="1398" height="216" key="GridCell.Tab.0.right" timestamp="1606823192608">
       <screen x="0" y="23" width="1440" height="807" />
     </state>
-    <state width="1398" height="207" key="GridCell.Tab.0.right/0.23.1440.807@0.23.1440.807" timestamp="1606813774756" />
+    <state width="1398" height="216" key="GridCell.Tab.0.right/0.23.1440.807@0.23.1440.807" timestamp="1606823192608" />
+    <state width="1398" height="207" key="GridCell.Tab.0.right/0.23.1440.810@0.23.1440.810" timestamp="1606818238724" />
     <state x="328" y="44" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606811859927">
       <screen x="0" y="23" width="1440" height="807" />
     </state>

@@ -3,6 +3,7 @@ package excel
 import (
 	"fmt"
 	"testing"
+	"time"
 )
 
 type Resume struct {
@@ -10,6 +11,9 @@ type Resume struct {
 	Like string `json:"like"`
 	Sex string `json:"sex" excelName:"我的性别"`
 	Age int `json:"age" excelName:"我的年龄"`
+	Status int8 `json:"status" excelName:"当前状态" enums:"0:冻结,1:开启,2:关闭"`
+	CreateTime int64 `json:"create_time" excelName:"创建时间" excelTime:"int"`
+	UpdateTime time.Time `json:"update_time" excelName:"更新时间" excelTime:"time"`
 	Test string `json:"test" excelName:"测试1"`
 	Test2 string `json:"test2" excelName:"测试2"`
 	Test3 string `json:"test3" excelName:"测试3"`
@@ -32,6 +36,9 @@ func TestExcel(t *testing.T) {
 		Sex:  "男",
 		Like: "game",
 		Age:  19,
+		CreateTime: time.Now().Unix(),
+		UpdateTime: time.Now(),
+		Status: 2,
 		Test: "1",
 		Test2: "1",
 		Test3: "1",
@@ -48,16 +55,20 @@ func TestExcel(t *testing.T) {
 		Test19: "1",
 	}
 
-	for i := 0; i < 50000;i ++ {
+	for i := 0; i < 100000;i ++ {
 		stru = append(stru,info)
 	}
-	e := Excel{}
+	e := Excel{
+		Sheet: "Sheet2",
+	}
 	err := e.SaveExcel("test.xlsx",&stru)
 	fmt.Println(err)
 	return
 }
 func TestExcel_ReadExcel(t *testing.T) {
-	e := Excel{}
+	e := Excel{
+		Sheet: "Sheet2",
+	}
 	var stru []Resume
 	err := e.ReadExcel("test.xlsx",&stru)
 	fmt.Println(err)

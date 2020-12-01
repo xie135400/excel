@@ -6,6 +6,8 @@ import (
 	"github.com/360EntSecGroup-Skylar/excelize/v2"
 	"reflect"
 	"strconv"
+	"strings"
+	"time"
 )
 
 type Excel struct {
@@ -25,14 +27,15 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 		return err
 	}
 	v := reflect.ValueOf(data).Elem()
-	c := reflect.TypeOf(data).Elem().Elem()
 	t := reflect.TypeOf(data).Elem().Elem()
 	// Get all the rows in the Sheet1.
 	rows, err := e.f.GetRows(e.Sheet)
 	var map_data = make(map[int]int)
+	var map_arr = make(map[int]map[string]int)
 	var v_index int = 0
 	for x, row := range rows {
 		if x == 0 {
+
 			for y, colCell := range row {
 				if x == 0 {
 					null_num := 0
@@ -45,6 +48,16 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 						if excelName == colCell {
 							map_data[i] = y
 						}
+						if enums_str := t.Field(i).Tag.Get("enums") ; enums_str != "" {
+							var map_v = make(map[string]int)
+							enums_arr := strings.Split(enums_str, ",")
+							for _, v := range enums_arr {
+								enums_v := strings.Split(v, ":")
+								key, _ := strconv.Atoi(enums_v[0])
+								map_v[enums_v[1]] = key
+							}
+							map_arr[i] = map_v
+						}
 					}
 				}
 
@@ -52,7 +65,7 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 			continue
 		}
 		var subv reflect.Value
-		subv = reflect.New(c).Elem()
+		subv = reflect.New(t).Elem()
 		v2 := reflect.Append(v,subv)
 		v.Set(v2)
 		for i := 0; i < v.Index(v_index).NumField();i++ {
@@ -70,6 +83,12 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 				break
 			case reflect.Int8:
 				data_v ,_ := strconv.Atoi(excel_value)
+				if enums_str := t.Field(i).Tag.Get("enums") ; enums_str != "" {
+					map_v := map_arr[i]
+					if _ ,ok := map_v[excel_value] ; ok{
+						data_v = map_v[excel_value]
+					}
+				}
 				v.Index(v_index).Field(i).Set(reflect.ValueOf(int8(data_v)))
 				break
 			case reflect.Int16:
@@ -82,6 +101,11 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 				break
 			case reflect.Int64:
 				data_v ,_ := strconv.Atoi(excel_value)
+				if t.Field(i).Tag.Get("excelTime") == "int" || t.Field(i).Tag.Get("excelTime") == "int64" {
+					local, _ := time.LoadLocation("Local")
+					t, _ := time.ParseInLocation("2006-01-02 15:04:05", excel_value, local)
+					data_v = int(t.Unix())
+				}
 				v.Index(v_index).Field(i).Set(reflect.ValueOf(int64(data_v)))
 				break
 			case reflect.Uint:
@@ -116,9 +140,14 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 				data_v,_ := strconv.ParseBool(excel_value)
 				v.Index(v_index).Field(i).Set(reflect.ValueOf(data_v))
 				break
+			case reflect.TypeOf(time.Time{}).Kind():
+				local, _ := time.LoadLocation("Local")
+				t, _ := time.ParseInLocation("2006-01-02 15:04:05", excel_value, local)
+				v.Index(v_index).Field(i).Set(reflect.ValueOf(t))
+				break
 			default:
-				err = errors.New("不支持的数据类型")
-				return err
+				//v.Index(v_index).Field(i).Set(reflect.ValueOf(0))
+				//break
 			}
 		}
 		v_index++
@@ -138,11 +167,23 @@ func (e *Excel) SaveExcel(file string,data interface{})(err error){
 	index := e.f.NewSheet(e.Sheet)
 	t := reflect.TypeOf(data).Elem().Elem()
 	null_num := 0
+	var map_arr = make(map[int]map[int]string)
 	for i := 0; i < t.NumField(); i++ {
 		excelName := t.Field(i).Tag.Get("excelName")
 		if excelName == "" {
 			null_num++
 			continue
+		}
+		enums_str := t.Field(i).Tag.Get("enums")
+		if enums_str != "" {
+			map_data := make(map[int]string)
+			enums_arr := strings.Split(enums_str,",")
+			for _,v := range enums_arr {
+				enums_v := strings.Split(v,":")
+				key ,_ := strconv.Atoi(enums_v[0])
+				map_data[key] = enums_v[1]
+			}
+			map_arr[i] = map_data
 		}
 		axis := fmt.Sprintf("%s1",addStr("A",int32(i-null_num)))
 		e.f.SetCellValue(e.Sheet,axis,excelName)
@@ -159,8 +200,27 @@ func (e *Excel) SaveExcel(file string,data interface{})(err error){
 					null_num++
 					continue
 				}
+				cell_value := value.Field(x)
+				enums_str := t.Field(x).Tag.Get("enums")
+				if enums_str != "" {
+					map_data := map_arr[x]
+					if _ ,ok := map_data[int(value.Field(x).Int())] ; ok{
+						cell_value = reflect.ValueOf(map_data[int(value.Field(x).Int())])
+					}
+				}
+				excelTime := t.Field(x).Tag.Get("excelTime")
+				switch excelTime {
+				case "time":
+					val_str := fmt.Sprintf("%v",value.Field(x))
+					cell_value = reflect.ValueOf(val_str[:19])
+					break
+				case "int","int64":
+					t := time.Unix(value.Field(x).Int(), 0).Format("2006-01-02 15:04:05")
+					cell_value = reflect.ValueOf(t)
+					break
+				}
 				axis := fmt.Sprintf("%s%d",addStr("A",int32(x-null_num)),i + 2)
-				e.f.SetCellValue(e.Sheet,axis,value.Field(x))
+				e.f.SetCellValue(e.Sheet,axis,cell_value)
 			}
 		 }
 	}
