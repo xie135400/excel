@@ -1,4 +1,4 @@
-module pkg/excel
+module github.com/xie135400/excel
 
 go 1.15
 
