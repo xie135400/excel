@@ -28,6 +28,9 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 	}
 	v := reflect.ValueOf(data).Elem()
 	t := reflect.TypeOf(data).Elem().Elem()
+	if t.Kind() == reflect.Ptr {
+		t = t.Elem()
+	}
 	// Get all the rows in the Sheet1.
 	rows, err := e.f.GetRows(e.Sheet)
 	var map_data = make(map[int]int)
@@ -65,21 +68,28 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 			continue
 		}
 		var subv reflect.Value
-		subv = reflect.New(t).Elem()
+		subv = reflect.New(t)
+		if v.Type().Elem().Kind() != reflect.Ptr {
+			subv = subv.Elem()
+		}
 		v2 := reflect.Append(v,subv)
 		v.Set(v2)
-		for i := 0; i < v.Index(v_index).NumField();i++ {
+		v_index_value := v.Index(v_index)
+		if v_index_value.Type().Kind() == reflect.Ptr {
+			v_index_value = v_index_value.Elem()
+		}
+		for i := 0; i < v_index_value.NumField();i++ {
 			if _, ok := map_data[i]; !ok {
 				continue
 			}
 			excel_value := row[map_data[i]]
-			switch v.Index(v_index).Field(i).Type().Kind() {
+			switch v_index_value.Field(i).Type().Kind() {
 			case reflect.String:
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(excel_value))
+				v_index_value.Field(i).Set(reflect.ValueOf(excel_value))
 				break
 			case reflect.Int:
 				data_v ,_ := strconv.Atoi(excel_value)
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(data_v))
+				v_index_value.Field(i).Set(reflect.ValueOf(data_v))
 				break
 			case reflect.Int8:
 				data_v ,_ := strconv.Atoi(excel_value)
@@ -89,15 +99,15 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 						data_v = map_v[excel_value]
 					}
 				}
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(int8(data_v)))
+				v_index_value.Field(i).Set(reflect.ValueOf(int8(data_v)))
 				break
 			case reflect.Int16:
 				data_v ,_ := strconv.Atoi(excel_value)
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(int16(data_v)))
+				v_index_value.Field(i).Set(reflect.ValueOf(int16(data_v)))
 				break
 			case reflect.Int32:
 				data_v ,_ := strconv.Atoi(excel_value)
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(int32(data_v)))
+				v_index_value.Field(i).Set(reflect.ValueOf(int32(data_v)))
 				break
 			case reflect.Int64:
 				data_v ,_ := strconv.Atoi(excel_value)
@@ -106,47 +116,47 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 					t, _ := time.ParseInLocation("2006-01-02 15:04:05", excel_value, local)
 					data_v = int(t.Unix())
 				}
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(int64(data_v)))
+				v_index_value.Field(i).Set(reflect.ValueOf(int64(data_v)))
 				break
 			case reflect.Uint:
 				data_v ,_ := strconv.Atoi(excel_value)
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(uint(data_v)))
+				v_index_value.Field(i).Set(reflect.ValueOf(uint(data_v)))
 				break
 			case reflect.Uint8:
 				data_v ,_ := strconv.Atoi(excel_value)
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(uint8(data_v)))
+				v_index_value.Field(i).Set(reflect.ValueOf(uint8(data_v)))
 				break
 			case reflect.Uint16:
 				data_v ,_ := strconv.Atoi(excel_value)
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(uint16(data_v)))
+				v_index_value.Field(i).Set(reflect.ValueOf(uint16(data_v)))
 				break
 			case reflect.Uint32:
 				data_v ,_ := strconv.Atoi(excel_value)
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(uint32(data_v)))
+				v_index_value.Field(i).Set(reflect.ValueOf(uint32(data_v)))
 				break
 			case reflect.Uint64:
 				data_v ,_ := strconv.Atoi(excel_value)
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(uint64(data_v)))
+				v_index_value.Field(i).Set(reflect.ValueOf(uint64(data_v)))
 				break
 			case reflect.Float32:
 				data_v,_ := strconv.ParseFloat(excel_value,64)
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(float32(data_v)))
+				v_index_value.Field(i).Set(reflect.ValueOf(float32(data_v)))
 				break
 			case reflect.Float64:
 				data_v,_ := strconv.ParseFloat(excel_value,64)
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(data_v))
+				v_index_value.Field(i).Set(reflect.ValueOf(data_v))
 				break
 			case reflect.Bool:
 				data_v,_ := strconv.ParseBool(excel_value)
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(data_v))
+				v_index_value.Field(i).Set(reflect.ValueOf(data_v))
 				break
 			case reflect.TypeOf(time.Time{}).Kind():
 				local, _ := time.LoadLocation("Local")
 				t, _ := time.ParseInLocation("2006-01-02 15:04:05", excel_value, local)
-				v.Index(v_index).Field(i).Set(reflect.ValueOf(t))
+				v_index_value.Field(i).Set(reflect.ValueOf(t))
 				break
 			default:
-				//v.Index(v_index).Field(i).Set(reflect.ValueOf(0))
+				//v_index_value.Field(i).Set(reflect.ValueOf(0))
 				//break
 			}
 		}
@@ -166,6 +176,9 @@ func (e *Excel) SaveExcel(file string,data interface{})(err error){
 	e.f = excelize.NewFile()
 	index := e.f.NewSheet(e.Sheet)
 	t := reflect.TypeOf(data).Elem().Elem()
+	if t.Kind() == reflect.Ptr {
+		t = t.Elem()
+	}
 	null_num := 0
 	var map_arr = make(map[int]map[int]string)
 	for i := 0; i < t.NumField(); i++ {
@@ -192,6 +205,9 @@ func (e *Excel) SaveExcel(file string,data interface{})(err error){
 	if num > 0 {
 		 for i := 0; i < num; i++ {
 		 	value := reflect.ValueOf(data).Elem().Index(i)
+		 	if reflect.ValueOf(data).Elem().Index(i).Type().Kind() == reflect.Ptr {
+				value = value.Elem()
+			}
 			t := value.Type()
 			null_num := 0
 			for x := 0; x < t.NumField(); x++ {

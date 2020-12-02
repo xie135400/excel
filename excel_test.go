@@ -55,11 +55,11 @@ func TestExcel(t *testing.T) {
 		Test19: "1",
 	}
 
-	for i := 0; i < 100000;i ++ {
+	for i := 0; i < 10;i ++ {
 		stru = append(stru,info)
 	}
 	e := Excel{
-		Sheet: "Sheet2",
+		Sheet: "Sheet1",
 	}
 	err := e.SaveExcel("test.xlsx",&stru)
 	fmt.Println(err)
@@ -67,11 +67,13 @@ func TestExcel(t *testing.T) {
 }
 func TestExcel_ReadExcel(t *testing.T) {
 	e := Excel{
-		Sheet: "Sheet2",
+		Sheet: "Sheet1",
 	}
-	var stru []Resume
+	var stru []*Resume
 	err := e.ReadExcel("test.xlsx",&stru)
 	fmt.Println(err)
-	fmt.Println(stru)
+	for _,v := range stru {
+		fmt.Println(v)
+	}
 	return
 }

@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b5b8c4f8-49d9-4646-929b-86dc697e3538" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excel.go" beforeDir="false" afterPath="$PROJECT_DIR$/excel.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/excel_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/excel_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.xlsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +58,7 @@
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Go Test.TestExcel in github.com/xie135400/excel">
+  <component name="RunManager" selected="Go Test.TestExcel_ReadExcel in github.com/xie135400/excel">
     <configuration name="TestExcel in github.com/xie135400/excel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="excel" />
       <working_directory value="$PROJECT_DIR$" />
@@ -85,8 +105,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestExcel in github.com/xie135400/excel" />
         <item itemvalue="Go Test.TestExcel_ReadExcel in github.com/xie135400/excel" />
+        <item itemvalue="Go Test.TestExcel in github.com/xie135400/excel" />
         <item itemvalue="Go Test.TestExcel_ReadExcel in pkg/excel" />
         <item itemvalue="Go Test.TestExcel in pkg/excel" />
       </list>
@@ -96,30 +116,41 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="216" key="GridCell.Tab.0.bottom" timestamp="1606823260929">
-      <screen x="0" y="23" width="1440" height="807" />
+    <state width="1398" height="216" key="GridCell.Tab.0.bottom" timestamp="1606875009490">
+      <screen x="0" y="23" width="1440" height="810" />
     </state>
     <state width="1398" height="216" key="GridCell.Tab.0.bottom/0.23.1440.807@0.23.1440.807" timestamp="1606823260929" />
-    <state width="1398" height="207" key="GridCell.Tab.0.bottom/0.23.1440.810@0.23.1440.810" timestamp="1606818238724" />
-    <state width="1398" height="216" key="GridCell.Tab.0.center" timestamp="1606823260928">
-      <screen x="0" y="23" width="1440" height="807" />
+    <state width="1398" height="216" key="GridCell.Tab.0.bottom/0.23.1440.810@0.23.1440.810" timestamp="1606875009490" />
+    <state width="1398" height="216" key="GridCell.Tab.0.center" timestamp="1606875009489">
+      <screen x="0" y="23" width="1440" height="810" />
     </state>
     <state width="1398" height="216" key="GridCell.Tab.0.center/0.23.1440.807@0.23.1440.807" timestamp="1606823260928" />
-    <state width="1398" height="207" key="GridCell.Tab.0.center/0.23.1440.810@0.23.1440.810" timestamp="1606818238723" />
-    <state width="1398" height="216" key="GridCell.Tab.0.left" timestamp="1606823260927">
-      <screen x="0" y="23" width="1440" height="807" />
+    <state width="1398" height="216" key="GridCell.Tab.0.center/0.23.1440.810@0.23.1440.810" timestamp="1606875009489" />
+    <state width="1398" height="216" key="GridCell.Tab.0.left" timestamp="1606875009488">
+      <screen x="0" y="23" width="1440" height="810" />
     </state>
     <state width="1398" height="216" key="GridCell.Tab.0.left/0.23.1440.807@0.23.1440.807" timestamp="1606823260927" />
-    <state width="1398" height="207" key="GridCell.Tab.0.left/0.23.1440.810@0.23.1440.810" timestamp="1606818238723" />
-    <state width="1398" height="216" key="GridCell.Tab.0.right" timestamp="1606823260928">
-      <screen x="0" y="23" width="1440" height="807" />
+    <state width="1398" height="216" key="GridCell.Tab.0.left/0.23.1440.810@0.23.1440.810" timestamp="1606875009488" />
+    <state width="1398" height="216" key="GridCell.Tab.0.right" timestamp="1606875009489">
+      <screen x="0" y="23" width="1440" height="810" />
     </state>
     <state width="1398" height="216" key="GridCell.Tab.0.right/0.23.1440.807@0.23.1440.807" timestamp="1606823260928" />
-    <state width="1398" height="207" key="GridCell.Tab.0.right/0.23.1440.810@0.23.1440.810" timestamp="1606818238724" />
+    <state width="1398" height="216" key="GridCell.Tab.0.right/0.23.1440.810@0.23.1440.810" timestamp="1606875009489" />
     <state x="328" y="44" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606811859927">
       <screen x="0" y="23" width="1440" height="807" />
     </state>
