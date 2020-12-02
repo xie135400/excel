@@ -248,8 +248,15 @@ func (e *Excel) SaveExcel(file string,data interface{})(err error){
 }
 func addStr(v string,add int32) string{
 	x := []rune(v)
-	for index := range x {
-		x[index] = x[index] + add
+	xLen := len(x)
+	if (x[xLen - 1] + add) > 90{
+		if xLen == 1 {
+			return addStr("AA",add-1)
+		}
+		if xLen == 2 {
+			return addStr(string(x[0] + 1)+"A",add - 1)
+		}
 	}
+	x[xLen-1] = x[xLen-1] + add
 	return string(x)
 }

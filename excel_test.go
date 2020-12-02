@@ -77,3 +77,7 @@ func TestExcel_ReadExcel(t *testing.T) {
 	}
 	return
 }
+func TestAddStr(t *testing.T){
+
+	fmt.Println(addStr("BZ",3))
+}
