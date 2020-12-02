@@ -36,19 +36,18 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 	var map_data = make(map[int]int)
 	var map_arr = make(map[int]map[string]int)
 	var v_index int = 0
-	for x, row := range rows {
-		if x == 0 {
-
+	for j, row := range rows {
+		if j == 0 {
 			for y, colCell := range row {
-				if x == 0 {
+				if j == 0 {
 					null_num := 0
 					for i := 0; i < t.NumField(); i++ {
-						excelName := t.Field(i).Tag.Get("excelName")
-						if excelName == "" {
+						excel_name := t.Field(i).Tag.Get("excel_name")
+						if excel_name == "" {
 							null_num++
 							continue
 						}
-						if excelName == colCell {
+						if excel_name == colCell {
 							map_data[i] = y
 						}
 						if enums_str := t.Field(i).Tag.Get("enums") ; enums_str != "" {
@@ -111,7 +110,7 @@ func (e *Excel) ReadExcel(file string,data interface{})(err error){
 				break
 			case reflect.Int64:
 				data_v ,_ := strconv.Atoi(excel_value)
-				if t.Field(i).Tag.Get("excelTime") == "int" || t.Field(i).Tag.Get("excelTime") == "int64" {
+				if t.Field(i).Tag.Get("excel_time") == "int" || t.Field(i).Tag.Get("excel_time") == "int64" {
 					local, _ := time.LoadLocation("Local")
 					t, _ := time.ParseInLocation("2006-01-02 15:04:05", excel_value, local)
 					data_v = int(t.Unix())
@@ -182,8 +181,8 @@ func (e *Excel) SaveExcel(file string,data interface{})(err error){
 	null_num := 0
 	var map_arr = make(map[int]map[int]string)
 	for i := 0; i < t.NumField(); i++ {
-		excelName := t.Field(i).Tag.Get("excelName")
-		if excelName == "" {
+		excel_name := t.Field(i).Tag.Get("excel_name")
+		if excel_name == "" {
 			null_num++
 			continue
 		}
@@ -199,7 +198,7 @@ func (e *Excel) SaveExcel(file string,data interface{})(err error){
 			map_arr[i] = map_data
 		}
 		axis := fmt.Sprintf("%s1",addStr("A",int32(i-null_num)))
-		e.f.SetCellValue(e.Sheet,axis,excelName)
+		e.f.SetCellValue(e.Sheet,axis,excel_name)
 	}
 	num := reflect.ValueOf(data).Elem().Len()
 	if num > 0 {
@@ -211,8 +210,8 @@ func (e *Excel) SaveExcel(file string,data interface{})(err error){
 			t := value.Type()
 			null_num := 0
 			for x := 0; x < t.NumField(); x++ {
-				excelName := t.Field(x).Tag.Get("excelName")
-				if excelName == "" {
+				excel_name := t.Field(x).Tag.Get("excel_name")
+				if excel_name == "" {
 					null_num++
 					continue
 				}
@@ -224,8 +223,8 @@ func (e *Excel) SaveExcel(file string,data interface{})(err error){
 						cell_value = reflect.ValueOf(map_data[int(value.Field(x).Int())])
 					}
 				}
-				excelTime := t.Field(x).Tag.Get("excelTime")
-				switch excelTime {
+				excel_time := t.Field(x).Tag.Get("excel_time")
+				switch excel_time {
 				case "time":
 					val_str := fmt.Sprintf("%v",value.Field(x))
 					cell_value = reflect.ValueOf(val_str[:19])
