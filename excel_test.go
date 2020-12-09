@@ -17,7 +17,7 @@ import (
 type Resume struct {
 	Name       string    `json:"name" excel_name:"我的名字"`
 	Like       string    `json:"like"`
-	Sex        string    `json:"sex" excel_name:"我的性别"`
+	Sex        string    `json:"sex" excel_name:""`
 	Age        int       `json:"age" excel_name:"我的年龄"`
 	Status     int8      `json:"status" excel_name:"当前状态" enums:"0:冻结,1:开启,2:关闭"` //如设置enums 数据类型必须为 int8
 	CreateTime int64     `json:"create_time" excel_name:"创建时间" excel_time:"int"`  //如设置 excel_time为int 数据类型必须为 int64
@@ -39,7 +39,7 @@ type Resume struct {
 }
 
 type HeatMapData struct {
-	Index          string  `json:"index" excel_name:"index"`
+	Index          string  `json:"index" excel_name:""`
 	BuildingsPower float64 `json:"buildings_power" excel_name:"buildings_power"`
 	Paid           float64 `json:"paid" excel_name:"paid"`
 	Power          float64 `json:"power" excel_name:"power"`
@@ -180,10 +180,10 @@ func TestRunPythonScript(t *testing.T) {
 	}
 	result := string(out)
 	fmt.Println("result:", result)
-	if strings.Index(result, "success") != 0 {
-		err = errors.New(fmt.Sprintf("main.py error：%s", result))
+	if strings.Index(result, "success") == -1 {
+		err = errors.New(fmt.Sprintf("error：%s", result))
 	}
-	fmt.Println(err)
+	fmt.Println("err:", err)
 	return
 }
 func TestAddStr(t *testing.T) {

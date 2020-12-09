@@ -23,7 +23,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/excel.go" beforeDir="false" afterPath="$PROJECT_DIR$/excel.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/excel_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/excel_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/test.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,17 +58,6 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager" selected="Go Test.TestExcel_ReadCsv in github.com/xie135400/excel">
-    <configuration name="TestCsvReadExcel in github.com/xie135400/excel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="excel" />
-      <working_directory value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/xie135400/excel" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestCsvReadExcel\E$" />
-      <method v="2" />
-    </configuration>
     <configuration name="TestExcel in github.com/xie135400/excel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="excel" />
       <working_directory value="$PROJECT_DIR$" />
@@ -103,6 +91,17 @@
       <pattern value="^\QTestExcel_ReadExcel\E$" />
       <method v="2" />
     </configuration>
+    <configuration name="TestRunPythonScript in github.com/xie135400/excel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="excel" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/xie135400/excel" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestRunPythonScript\E$" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestWriteCsv in github.com/xie135400/excel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="excel" />
       <working_directory value="$PROJECT_DIR$" />
@@ -117,10 +116,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Go Test.TestExcel_ReadCsv in github.com/xie135400/excel" />
-        <item itemvalue="Go Test.TestExcel in github.com/xie135400/excel" />
         <item itemvalue="Go Test.TestWriteCsv in github.com/xie135400/excel" />
         <item itemvalue="Go Test.TestExcel_ReadExcel in github.com/xie135400/excel" />
-        <item itemvalue="Go Test.TestCsvReadExcel in github.com/xie135400/excel" />
+        <item itemvalue="Go Test.TestExcel in github.com/xie135400/excel" />
+        <item itemvalue="Go Test.TestRunPythonScript in github.com/xie135400/excel" />
       </list>
     </recent_temporary>
   </component>
@@ -140,11 +139,19 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="增加CSV读写" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加CSV读写" />
+  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="214" key="GridCell.Tab.0.bottom" timestamp="1607419932581">
+    <state x="304" y="25" key="CommitChangelistDialog2" timestamp="1607420277416">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state x="304" y="25" key="CommitChangelistDialog2/0.25.1440.813@0.25.1440.813" timestamp="1607420277416" />
+    <state width="1398" height="283" key="GridCell.Tab.0.bottom" timestamp="1607485800280">
       <screen x="0" y="25" width="1440" height="813" />
     </state>
     <state width="1398" height="216" key="GridCell.Tab.0.bottom/0.23.1440.807@0.23.1440.807" timestamp="1606823260929" />
@@ -152,9 +159,9 @@
     <state width="1398" height="216" key="GridCell.Tab.0.bottom/0.23.1440.812@0.23.1440.812" timestamp="1606894700646" />
     <state width="1398" height="216" key="GridCell.Tab.0.bottom/0.23.1440.813@0.23.1440.813" timestamp="1606995643518" />
     <state width="1398" height="216" key="GridCell.Tab.0.bottom/0.23.1440.815@0.23.1440.815" timestamp="1606898852408" />
-    <state width="1398" height="214" key="GridCell.Tab.0.bottom/0.25.1440.813@0.25.1440.813" timestamp="1607419932581" />
-    <state width="1398" height="214" key="GridCell.Tab.0.bottom/0.25.1440.814@0.25.1440.814" timestamp="1607419571097" />
-    <state width="1398" height="214" key="GridCell.Tab.0.center" timestamp="1607419932580">
+    <state width="1398" height="283" key="GridCell.Tab.0.bottom/0.25.1440.813@0.25.1440.813" timestamp="1607485800280" />
+    <state width="1398" height="214" key="GridCell.Tab.0.bottom/0.25.1440.814@0.25.1440.814" timestamp="1607427485200" />
+    <state width="1398" height="283" key="GridCell.Tab.0.center" timestamp="1607485800279">
       <screen x="0" y="25" width="1440" height="813" />
     </state>
     <state width="1398" height="216" key="GridCell.Tab.0.center/0.23.1440.807@0.23.1440.807" timestamp="1606823260928" />
@@ -162,9 +169,9 @@
     <state width="1398" height="216" key="GridCell.Tab.0.center/0.23.1440.812@0.23.1440.812" timestamp="1606894700645" />
     <state width="1398" height="216" key="GridCell.Tab.0.center/0.23.1440.813@0.23.1440.813" timestamp="1606995643517" />
     <state width="1398" height="216" key="GridCell.Tab.0.center/0.23.1440.815@0.23.1440.815" timestamp="1606898852407" />
-    <state width="1398" height="214" key="GridCell.Tab.0.center/0.25.1440.813@0.25.1440.813" timestamp="1607419932580" />
-    <state width="1398" height="214" key="GridCell.Tab.0.center/0.25.1440.814@0.25.1440.814" timestamp="1607419571096" />
-    <state width="1398" height="214" key="GridCell.Tab.0.left" timestamp="1607419932580">
+    <state width="1398" height="283" key="GridCell.Tab.0.center/0.25.1440.813@0.25.1440.813" timestamp="1607485800279" />
+    <state width="1398" height="214" key="GridCell.Tab.0.center/0.25.1440.814@0.25.1440.814" timestamp="1607427485200" />
+    <state width="1398" height="283" key="GridCell.Tab.0.left" timestamp="1607485800278">
       <screen x="0" y="25" width="1440" height="813" />
     </state>
     <state width="1398" height="216" key="GridCell.Tab.0.left/0.23.1440.807@0.23.1440.807" timestamp="1606823260927" />
@@ -172,9 +179,9 @@
     <state width="1398" height="216" key="GridCell.Tab.0.left/0.23.1440.812@0.23.1440.812" timestamp="1606894700645" />
     <state width="1398" height="216" key="GridCell.Tab.0.left/0.23.1440.813@0.23.1440.813" timestamp="1606995643517" />
     <state width="1398" height="216" key="GridCell.Tab.0.left/0.23.1440.815@0.23.1440.815" timestamp="1606898852407" />
-    <state width="1398" height="214" key="GridCell.Tab.0.left/0.25.1440.813@0.25.1440.813" timestamp="1607419932580" />
-    <state width="1398" height="214" key="GridCell.Tab.0.left/0.25.1440.814@0.25.1440.814" timestamp="1607419571095" />
-    <state width="1398" height="214" key="GridCell.Tab.0.right" timestamp="1607419932580">
+    <state width="1398" height="283" key="GridCell.Tab.0.left/0.25.1440.813@0.25.1440.813" timestamp="1607485800278" />
+    <state width="1398" height="214" key="GridCell.Tab.0.left/0.25.1440.814@0.25.1440.814" timestamp="1607427485199" />
+    <state width="1398" height="283" key="GridCell.Tab.0.right" timestamp="1607485800279">
       <screen x="0" y="25" width="1440" height="813" />
     </state>
     <state width="1398" height="216" key="GridCell.Tab.0.right/0.23.1440.807@0.23.1440.807" timestamp="1606823260928" />
@@ -182,8 +189,8 @@
     <state width="1398" height="216" key="GridCell.Tab.0.right/0.23.1440.812@0.23.1440.812" timestamp="1606894700646" />
     <state width="1398" height="216" key="GridCell.Tab.0.right/0.23.1440.813@0.23.1440.813" timestamp="1606995643518" />
     <state width="1398" height="216" key="GridCell.Tab.0.right/0.23.1440.815@0.23.1440.815" timestamp="1606898852408" />
-    <state width="1398" height="214" key="GridCell.Tab.0.right/0.25.1440.813@0.25.1440.813" timestamp="1607419932580" />
-    <state width="1398" height="214" key="GridCell.Tab.0.right/0.25.1440.814@0.25.1440.814" timestamp="1607419571096" />
+    <state width="1398" height="283" key="GridCell.Tab.0.right/0.25.1440.813@0.25.1440.813" timestamp="1607485800279" />
+    <state width="1398" height="214" key="GridCell.Tab.0.right/0.25.1440.814@0.25.1440.814" timestamp="1607427485200" />
     <state width="1398" height="258" key="GridCell.Tab.1.bottom" timestamp="1607409014747">
       <screen x="0" y="25" width="1440" height="814" />
     </state>

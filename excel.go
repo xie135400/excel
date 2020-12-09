@@ -46,8 +46,8 @@ func (e *Excel) ReadExcel(file string, data interface{}) (err error) {
 				if j == 0 {
 					null_num := 0
 					for i := 0; i < t.NumField(); i++ {
-						excel_name := t.Field(i).Tag.Get("excel_name")
-						if excel_name == "" {
+						excel_name, ok := t.Field(i).Tag.Lookup("excel_name")
+						if !ok {
 							null_num++
 							continue
 						}
@@ -182,7 +182,7 @@ func (e *Excel) ReadCsv(file string, data interface{}) (err error) {
 	//}
 	f, err := os.Open(file)
 	if err != nil {
-		fmt.Println(err)
+		return err
 	}
 	defer f.Close()
 	reader := csv.NewReader(f)
@@ -201,24 +201,19 @@ func (e *Excel) ReadCsv(file string, data interface{}) (err error) {
 		if err == io.EOF {
 			break
 		} else if err != nil {
-			fmt.Println("Error:", err)
 			return err
 		}
 		if j == 0 {
 			for y, colCell := range row {
 				null_num := 0
 				for i := 0; i < t.NumField(); i++ {
-					excel_name := t.Field(i).Tag.Get("excel_name")
-					if excel_name == "" {
+					excel_name, ok := t.Field(i).Tag.Lookup("excel_name")
+					if !ok {
 						null_num++
 						continue
 					}
 					if excel_name == colCell {
 						map_data[i] = y
-						fmt.Println("y:", y)
-						fmt.Println("colCell:", colCell)
-						fmt.Println("[i]:", i)
-						fmt.Println("map_data[i]:", map_data[i])
 					}
 					if enums_str := t.Field(i).Tag.Get("enums"); enums_str != "" {
 						var map_v = make(map[string]int)
@@ -354,8 +349,8 @@ func (e *Excel) SaveExcel(file string, data interface{}) (err error) {
 	null_num := 0
 	var map_arr = make(map[int]map[int]string)
 	for i := 0; i < t.NumField(); i++ {
-		excel_name := t.Field(i).Tag.Get("excel_name")
-		if excel_name == "" {
+		excel_name, ok := t.Field(i).Tag.Lookup("excel_name")
+		if !ok {
 			null_num++
 			continue
 		}
@@ -383,8 +378,8 @@ func (e *Excel) SaveExcel(file string, data interface{}) (err error) {
 			t := value.Type()
 			null_num := 0
 			for x := 0; x < t.NumField(); x++ {
-				excel_name := t.Field(x).Tag.Get("excel_name")
-				if excel_name == "" {
+				_, ok := t.Field(x).Tag.Lookup("excel_name")
+				if !ok {
 					null_num++
 					continue
 				}
@@ -427,7 +422,7 @@ func (e *Excel) SaveCsv(file string, data interface{}) (err error) {
 	}
 	f, err := os.Create(file)
 	if err != nil {
-		fmt.Println("open file is failed, err: ", err)
+		return err
 	}
 	defer f.Close()
 	// 写入UTF-8 BOM，防止中文乱码
@@ -441,8 +436,8 @@ func (e *Excel) SaveCsv(file string, data interface{}) (err error) {
 	var map_arr = make(map[int]map[int]string)
 	csvHeard := make([]string, 0)
 	for i := 0; i < t.NumField(); i++ {
-		excel_name := t.Field(i).Tag.Get("excel_name")
-		if excel_name == "" {
+		excel_name, ok := t.Field(i).Tag.Lookup("excel_name")
+		if !ok {
 			null_num++
 			continue
 		}
@@ -471,8 +466,8 @@ func (e *Excel) SaveCsv(file string, data interface{}) (err error) {
 			null_num := 0
 			cellData := make([]string, 0)
 			for x := 0; x < t.NumField(); x++ {
-				excel_name := t.Field(x).Tag.Get("excel_name")
-				if excel_name == "" {
+				_, ok := t.Field(x).Tag.Lookup("excel_name")
+				if !ok {
 					null_num++
 					continue
 				}
